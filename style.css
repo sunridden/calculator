@@ -22,6 +22,10 @@ body {
     border-radius: 10px;
 }
 
+#screen-text {
+    text-align: right;
+}
+
 #buttons {
     display: grid;
     margin: 25px;
