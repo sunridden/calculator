@@ -96,6 +96,14 @@ function calculate() {
         result = operate(operation, oldNumber, currentNumber);
         display(result);
     })
+
+    const clearBtn = document.querySelector(".clear");
+    clearBtn.addEventListener('click', () => {
+        oldNumber = undefined;
+        currentValue = [];
+        currentNumber = undefined;
+        display("");
+    })
 }
 
 calculate();
