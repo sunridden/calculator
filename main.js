@@ -41,7 +41,7 @@ function display(text) {
 function calculate() {
     let currentValue = [];
     let operation = undefined;
-    let currentNumber = undefined;
+    let currentNumber = 0;
     let oldNumber = undefined;
     let result = 0;
 
