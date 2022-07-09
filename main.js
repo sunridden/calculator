@@ -43,7 +43,6 @@ function calculate() {
     let operation = undefined;
     let currentNumber = undefined;
     let oldNumber = undefined;
-
     let result = 0;
 
     const operands = document.querySelectorAll(".display");
@@ -51,9 +50,7 @@ function calculate() {
         operand.addEventListener('click', () => {
             //the displayed value needs to be the concactenated string with all decimal values for a number
             currentValue.push(operand.innerHTML);
-            
             currentNumber = currentValue.join("");
-
             display(currentNumber);
         })
     })
@@ -62,16 +59,17 @@ function calculate() {
     operators.forEach((operator) => {
         operator.addEventListener('click', () => {
 
-            //logic that checks for two numbers and an operator leading to result being shown
+            //logic that checks for two numbers and an operator leading to a calculation being performed
             if (oldNumber != undefined && currentNumber != undefined && operation != undefined) {
-
-
                 result = operate(operation, oldNumber, currentNumber);
                 display(result);
+                //if an operation has completed, sets that value to be the next number calculated on
+                oldNumber = result;
+            } else if (operation == undefined) {
+                oldNumber = currentNumber;
             }
 
-            //resets for second number to be inputted
-            oldNumber = currentNumber;
+            //resets value for next number to be inputted
             currentValue = [];
             currentNumber = undefined;
 
@@ -93,8 +91,10 @@ function calculate() {
 
     const equals = document.querySelector(".equals");
     equals.addEventListener('click', () => {
-        result = operate(operation, oldNumber, currentNumber);
-        display(result);
+        if (oldNumber != undefined && currentNumber != undefined && operation != undefined) {
+            result = operate(operation, oldNumber, currentNumber);
+            display(result);
+        }
     })
 
     const clearBtn = document.querySelector(".clear");
