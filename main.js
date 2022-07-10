@@ -106,6 +106,7 @@ function calculate() {
         oldNumber = undefined;
         currentValue = [];
         currentNumber = 0;
+        operation = undefined;
         display(currentNumber);
     })
 }
