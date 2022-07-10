@@ -30,7 +30,11 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+    if (num2 == 0) {
+        return ("Cannot compute");
+    } else {
+        return num1 / num2;
+    }
 }
 
 function display(text) {
@@ -101,8 +105,8 @@ function calculate() {
     clearBtn.addEventListener('click', () => {
         oldNumber = undefined;
         currentValue = [];
-        currentNumber = undefined;
-        display("");
+        currentNumber = 0;
+        display(currentNumber);
     })
 }
 
