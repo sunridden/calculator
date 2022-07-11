@@ -105,11 +105,14 @@ function calculate() {
         })
     })
 
-    const equals = document.querySelector(".equals");
-    equals.addEventListener('click', () => {
+    const equalsBtn = document.querySelector(".equals");
+    equalsBtn.addEventListener('click', () => {
         if (oldNumber != undefined && currentNumber != undefined && operation != undefined) {
             result = operate(operation, oldNumber, currentNumber);
             display(result);
+
+            //prevents delete key from removing calculated value
+            currentValue = [];
         }
     })
 
@@ -121,6 +124,20 @@ function calculate() {
         operation = undefined;
         decimalBtnPressed = false;
         display(currentNumber);
+    })
+
+    //backspace button currently does not work for when a calculation has been performed and the result becomes the old number
+    const backspaceBtn = document.querySelector(".delete");
+    backspaceBtn.addEventListener('click', () => {
+        if (currentValue.length != 0) {
+            currentValue.pop();
+            currentNumber = currentValue.join("");
+            display(currentNumber);
+    
+            if (!(currentValue.includes("."))) {
+                decimalBtnPressed = false;
+            }
+        }
     })
 }
 
