@@ -118,6 +118,9 @@ function calculate() {
 
             //prevents delete key from removing calculated value
             currentValue = [];
+
+            oldNumber = result;
+            currentNumber = undefined;
         }
     })
 

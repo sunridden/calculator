@@ -4,6 +4,14 @@ body {
     
 }
 
+button {
+    border-style: solid;
+}
+
+button:hover {
+    background-color: darkgoldenrod;
+}
+
 #calculator {
     background-color: white;
     width: 450px;
@@ -32,19 +40,19 @@ body {
     margin-top: 0;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    
 }
 
 .clear {
     grid-column-start: 1;
     grid-column-end: 3;
+    background-color: #D8F3FA;
 }
 
 .delete {
     grid-column-start: 3;
     grid-column-end: -1;
+    background-color: #DE3163;
 }
-
 
 .button {
     padding: 20px;
