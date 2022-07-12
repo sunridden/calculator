@@ -14,6 +14,11 @@ function operate(operator, num1, num2) {
             result = divide(num1, num2);
     }
 
+    //logic for rounding decimals to three places
+    if (result % 1 != 0) {
+        result = result.toFixed(3);
+    }
+
     return result;
 }
 
@@ -123,7 +128,6 @@ function calculate() {
         display(currentNumber);
     })
 
-    //backspace button currently does not work for when a calculation has been performed and the result becomes the old number
     const backspaceBtn = document.querySelector(".delete");
     backspaceBtn.addEventListener('click', () => {
         if (currentValue.length != 0) {
