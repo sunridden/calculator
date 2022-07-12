@@ -48,7 +48,6 @@ function calculate() {
     let currentNumber = 0;
     let oldNumber = undefined;
     let result = 0;
-    let decimalBtnPressed = false;
 
     const operands = document.querySelectorAll(".display");
     operands.forEach((operand) => {
@@ -63,11 +62,10 @@ function calculate() {
     //logic to prevent decimal point being pressed more than once for a single number
     const decimalPoint = document.querySelector(".decimal");
     decimalPoint.addEventListener('click', () => {
-        if (decimalBtnPressed === false) {
+        if (!(currentValue.includes("."))) {
             currentValue.push(decimalPoint.innerHTML);
             currentNumber = currentValue.join("");
             display(currentNumber);
-            decimalBtnPressed = true;
         }
     })
 
@@ -122,7 +120,6 @@ function calculate() {
         currentValue = [];
         currentNumber = 0;
         operation = undefined;
-        decimalBtnPressed = false;
         display(currentNumber);
     })
 
@@ -133,10 +130,6 @@ function calculate() {
             currentValue.pop();
             currentNumber = currentValue.join("");
             display(currentNumber);
-    
-            if (!(currentValue.includes("."))) {
-                decimalBtnPressed = false;
-            }
         }
     })
 }
