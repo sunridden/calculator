@@ -16,7 +16,9 @@ function operate(operator, num1, num2) {
 
     //logic for rounding decimals to three places
     if (result % 1 != 0) {
-        result = result.toFixed(3);
+        if (result != "Cannot compute") {
+            result = result.toFixed(3);
+        }
     }
 
     return result;
