@@ -127,6 +127,12 @@ function calculate() {
                     operation = "Addition";
             }
 
+            //check case for more than one operator pressed in succession
+            let lastValue = calculationString.slice(-1);
+            if (lastValue == "/" || lastValue == "X" || lastValue == "-" || lastValue == "+") {
+                calculationString.pop();
+            }
+
             calculationString.push(operator.innerHTML);
             currentCalculation = calculationString.join("");
             displayCalculation(currentCalculation);
