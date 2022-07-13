@@ -49,8 +49,15 @@ function display(text) {
     screen_text.innerHTML = text;
 }
 
+function displayCalculation(text) {
+    const calculationText = document.getElementById("calculation-display");
+    calculationText.innerHTML = text;
+}
+
 function calculate() {
     let currentValue = [];
+    let calculationString = [];
+    let currentCalculation = 0;
     let operation = undefined;
     let currentNumber = 0;
     let oldNumber = undefined;
@@ -63,6 +70,10 @@ function calculate() {
             currentValue.push(operand.innerHTML);
             currentNumber = currentValue.join("");
             display(currentNumber);
+
+            calculationString.push(operand.innerHTML);
+            currentCalculation = calculationString.join("");
+            displayCalculation(currentCalculation);
         })
     })
 
@@ -73,6 +84,10 @@ function calculate() {
             currentValue.push(decimalPoint.innerHTML);
             currentNumber = currentValue.join("");
             display(currentNumber);
+
+            calculationString.push(decimalPoint.innerHTML);
+            currentCalculation = calculationString.join("");
+            displayCalculation(currentCalculation);
         }
     })
 
@@ -86,6 +101,10 @@ function calculate() {
                 display(result);
                 //if an operation has completed, sets that value to be the next number calculated on
                 oldNumber = result;
+                calculationString = [];
+                let resetValue = result.toString();
+                calculationString.push(resetValue);
+
             } else if (operation == undefined) {
                 oldNumber = currentNumber;
             }
@@ -107,6 +126,10 @@ function calculate() {
                 case "+":
                     operation = "Addition";
             }
+
+            calculationString.push(operator.innerHTML);
+            currentCalculation = calculationString.join("");
+            displayCalculation(currentCalculation);
         })
     })
 
@@ -115,6 +138,12 @@ function calculate() {
         if (oldNumber != undefined && currentNumber != undefined && operation != undefined) {
             result = operate(operation, oldNumber, currentNumber);
             display(result);
+
+            calculationString = [];
+            let resetValue = result.toString();
+            calculationString.push(resetValue);
+            currentCalculation = calculationString.join("");
+            displayCalculation(currentCalculation);
 
             //prevents delete key from removing calculated value
             currentValue = [];
@@ -130,7 +159,10 @@ function calculate() {
         currentValue = [];
         currentNumber = 0;
         operation = undefined;
+        calculationString = [];
+        currentCalculation = 0;
         display(currentNumber);
+        displayCalculation("");
     })
 
     const backspaceBtn = document.querySelector(".delete");
