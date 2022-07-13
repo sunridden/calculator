@@ -105,7 +105,7 @@ function calculate() {
                 let resetValue = result.toString();
                 calculationString.push(resetValue);
 
-            } else if (operation == undefined) {
+            } else if (operation === undefined) {
                 oldNumber = currentNumber;
             }
 
@@ -129,7 +129,7 @@ function calculate() {
 
             //check case for more than one operator pressed in succession
             let lastValue = calculationString.slice(-1);
-            if (lastValue == "/" || lastValue == "X" || lastValue == "-" || lastValue == "+") {
+            if (lastValue === "/" || lastValue === "X" || lastValue === "-" || lastValue === "+") {
                 calculationString.pop();
             }
 
@@ -177,6 +177,10 @@ function calculate() {
             currentValue.pop();
             currentNumber = currentValue.join("");
             display(currentNumber);
+
+            calculationString.pop();
+            currentCalculation = calculationString.join("");
+            displayCalculation(currentCalculation);
         }
     })
 }
