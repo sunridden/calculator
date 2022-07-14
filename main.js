@@ -129,6 +129,7 @@ function calculate() {
 
             //check case for more than one operator pressed in succession
             let lastValue = calculationString.slice(-1);
+            lastValue = lastValue.toString();
             if (lastValue === "/" || lastValue === "X" || lastValue === "-" || lastValue === "+") {
                 calculationString.pop();
             }
